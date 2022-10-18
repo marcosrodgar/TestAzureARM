@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'TestProjectAzure-conn'
+    subscriptionId: '0dfc3d31-d006-4f87-a621-5baf2c1f0456'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'TestARMResourceGroup'
+    location: 'East US 2'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.documentdb/cosmosdb-free/azuredeploy.json'
+    overrideParameters: |
+      -databaseName FormBuilderDb
+      -containerName FormTemplates
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployTemplatePipeline'
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
