@@ -23,8 +23,8 @@ steps:
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.documentdb/cosmosdb-free/azuredeploy.json'
     overrideParameters: |
-      -databaseName FormBuilderDb
-      -containerName FormTemplates
+      '-databaseName FormBuilderDb
+      -containerName FormTemplates'
     deploymentMode: 'Incremental'
     deploymentName: 'DeployTemplatePipeline'
 - script: |
