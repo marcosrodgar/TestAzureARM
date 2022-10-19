@@ -21,8 +21,8 @@ steps:
     resourceGroupName: 'TestARMResourceGroup'
     location: 'East US 2'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.documentdb/cosmosdb-free/azuredeploy.json'
-    overrideParameters: -databaseName FormBuilderDbNew -containerName FormTemplates
+    csmFileLink: 'https://marcosrodgar.blob.core.windows.net/armtemplates/freecosmosdb.json'
+    overrideParameters: -databaseName FormBuilderDbNew2 -containerName FormTemplates
     deploymentMode: 'Incremental'
     deploymentName: 'DeployTemplatePipeline'
 - script: |
